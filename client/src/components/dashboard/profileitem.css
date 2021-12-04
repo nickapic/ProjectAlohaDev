@@ -1,0 +1,35 @@
+.profile-items {
+  width: 80%;
+  height: 10rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #2e2f33;
+  margin: 1rem 0rem;
+}
+.profile-image {
+  height: 4rem;
+  border-radius: 50px;
+  margin-left: 1rem;
+}
+.profile-information {
+  color: #dbdbdb;
+  font-size: 1rem;
+  margin-bottom: 0rem;
+}
+.profile-item {
+  margin-left: 2rem;
+  display: flex;
+  flex-direction: column;
+  height: 6rem;
+}
+.profile-skill-list {
+  margin-right: 60%;
+}
+.profile-skill-list span {
+  color: #dbdbdb;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  margin-right: 50%;
+}
