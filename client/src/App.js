@@ -30,6 +30,7 @@ import GDPR from './components/dashboard/GDPR';
 
 if(localStorage.token){
     setAuthToken(localStorage.token)
+    console.log("Nice Debug")
 }
 
 const App = () => {
