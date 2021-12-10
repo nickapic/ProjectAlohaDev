@@ -26,11 +26,14 @@ import AdminRoute from './components/routing/AdminRoute';
 import AdminLogin from './components/auth/AdminLogin';
 import AdminRegister from './components/auth/AdminRegister';
 import GDPR from './components/dashboard/GDPR';
-
+import RegisterHR from './components/auth/RegisterHR';
+import Resources from './components/resources/Resources';
+import ResourcePage from './components/resources/ResourcePage';
+import CookieConsent from "react-cookie-consent";
+import { Link } from '@chakra-ui/layout';
 
 if(localStorage.token){
     setAuthToken(localStorage.token)
-    console.log("Nice Debug")
 }
 
 const App = () => {
@@ -40,17 +43,18 @@ const App = () => {
   return (
     <Provider store={store}>
     <Router>
-    <Fragment>
+    <div className="app-container ">
         <Navbar/>
         <Route exact path='/' component={HeroPage} />
         <Alert/>
         <Switch>
           <Route exact path='/login' component={Login}/>
           <Route exact path='/register' component={Register}/> 
+          <Route exact path="/hrregister" component={RegisterHR}/>
           <PrivateRoute exact path='/dashboard' component={Dashboard}/> 
           <PrivateRoute exact path='/profile' component={CreateProfile}/>
           <Route exact path="/profiles" component={Profiles}/> 
-           <Route exact path="/profile/:id" component={Profile}/> 
+          <Route exact path="/profile/:id" component={Profile}/> 
           <PrivateRoute exact path="/addexperience" component={AddExperience}/>
           <PrivateRoute exact path="/addeducation" component={AddEducation}/>
           <PrivateRoute exact path="/jobs" component={jobs}/>
@@ -59,9 +63,20 @@ const App = () => {
           <AdminRoute exact path="/admin" component={AdminPage}/>
           <Route exact path="/adminlogin" component={AdminLogin}/>
           <Route exact path="/admin_register" component={AdminRegister}/>
-          <PrivateRoute exact path="/gdpr" component={GDPR}/>
+          <Route exact path="/gdpr" component={GDPR}/>
+          <Route exact path="/resources" component={Resources} />
+          <Route exact path="/resources/:id" component={ResourcePage} />
         </Switch>
-    </Fragment> 
+        <CookieConsent
+          location="bottom"
+          buttonText="Understood"
+          style={{ background: "#2B373B" }}
+          buttonStyle={{ color: "#4e503b", fontSize: "13px" }}
+          debug={true}
+        > 
+  This website uses only essential cookies for Authentication and Authorization, no other cookies are used. To know more about our privacy please refer to our {<Link to="/gdpr" className="heropage-link">privacy policy</Link>}
+</CookieConsent>
+    </div> 
     </Router>
     </Provider>
   );

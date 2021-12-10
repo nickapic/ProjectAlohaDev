@@ -1,20 +1,39 @@
-import { Button } from '@chakra-ui/button'
+import { Button, ButtonGroup } from '@chakra-ui/react'
 import React, { Fragment } from 'react'
+import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import GDPR from './GDPR'
+import GDPR from './GDPR';
+import { Box, Flex } from '@chakra-ui/layout';
+import { ReactComponent as HeroLogo} from "../../profile.svg"
 
-
-const Actions = () => {
-    return (
+const Actions = ({auth:{loading, isAuthenticated, role}}) => {
+    const companyDashboard = (
         <Fragment>
-        <div className="dash-links">
-            <Button colorScheme="teal" marginRight="15px" padding="0px 25px"><Link to="/profile"> Edit your profile </Link></Button>
-            <Button colorScheme="teal" marginRight="15px" padding="0px 25px"><Link to="/addexperience"> Add Experience </Link></Button>
-            <Button colorScheme="teal" marginRight="15px" padding="0px 25px" ><Link to="/addeducation" > Add Education </Link></Button>
-            <Button colorScheme="teal" marginRight="15px" padding="0px 30px"><Link to="/createjob"> Create a Job Listing </Link></Button>
-        </div>
+            <ButtonGroup>
+                <Button as={Link} colorScheme="red" marginRight="15px" padding="0px 10px"  to="/createjob" >Create a Job Listing</Button>
+            </ButtonGroup>
         </Fragment>
+    );
+    const userDashboard = (
+        <Fragment>
+            <Button colorScheme="red" marginRight="15px" padding="0px 10px" className="action-button"><Link to="/profile"> Edit profile </Link></Button>
+            <Button colorScheme="red" marginRight="15px" padding="0px 10px" className="action-button"><Link to="/addexperience"> Add Experience </Link></Button>
+            <Button colorScheme="red" marginRight="15px" padding="0px 10px" className="action-button" ><Link to="/addeducation" > Add Education </Link></Button>
+        </Fragment>
+    )
+    return (
+        <Flex direction="row" align="flex-start">
+            <Box>
+                { !loading && ( <Fragment>
+                    { role === "company" ? companyDashboard : userDashboard }
+                </Fragment> ) }
+            </Box>
+        </Flex>
     )
 }
 
-export default Actions
+const mapStateToProps = state => ({
+    auth: state.auth
+  })
+
+export default connect(mapStateToProps,{})(Actions);

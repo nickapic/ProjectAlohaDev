@@ -1,21 +1,21 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { getJobs } from '../actions/job'
 import { Spinner } from '../components/Spinner'
 import JobItem from './JobItem'
-
 const Jobs = ({ getJobs , job:{
     jobs, loading
-} }) => {
+} }, ) => {
     useEffect(() => {
         getJobs();
     }, []);
+    let showJobs = jobs.slice(0, 2);
     return loading ? <Spinner/> : (
-        <div className="jobs-container">
-           <h3 className="jobs-heading">Here are the Job Results</h3>
-           <div className="jobs-list-container">
-               {jobs.map( job => (
+        <div >
+           <h3 className="jobs-heading">Job Openings</h3>
+           <div className="jobs-list-container">        
+               {showJobs.map( job => (
                    <JobItem key={job._id} job={job}/>
                ))}
            </div>

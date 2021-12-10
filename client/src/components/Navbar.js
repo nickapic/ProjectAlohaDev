@@ -3,37 +3,43 @@ import { Link } from 'react-router-dom'
 import './navbar.css'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { loadUser, logout } from '../actions/auth';
+import {  logout } from '../actions/auth';
 import { Fragment } from 'react';
 import { Button } from '@chakra-ui/button';
-
+import { MenuBar } from './dashboard/MenuBar';
+import { Text } from '@chakra-ui/layout';
 const Navbar = ({ auth: {isAuthenticated, loading}, logout}) => {
     const authLinks = (
-            <ul className="nav-links">
-                <li className="list-items"><Button variant="ghost"><Link to="/jobs">Jobs</Link></Button></li>
-                <li className="list-items"><Button variant="ghost"><Link to="/profiles">Profiles</Link></Button></li>
-                <li className="list-items"><Button fontWeight="700" textTransform="uppercase" variant="ghost"> <a href="https://nickapic.github.io/"  target="_blank">Resources</a></Button></li>
-                <li className="list-items"><Button colorScheme="red" onClick={logout} marginLeft="15px">Logout</Button></li>
+        <div className="navbar">
+        <Text variant="ghost" as={Link} fontWeight="700" fontSize="xl" to="/dashboard">Project Aloha Oy</Text>
+        { !loading && ( <Fragment>
+                <ul className="nav-links-auth">
+                <li className="nav-links-auth-links"><MenuBar/></li>
+                <li className="nav-links-auth-links"><Button colorScheme="red" onClick={logout}>Logout</Button></li>
             </ul>
+        </Fragment> ) }
+    </div>
+            
     );
     const guestLinks = (
-            <ul className="nav-links">
-                <li className="list-items"><Button variant="ghost"><Link to="/register">Register</Link></Button></li>
-                <li className="list-items"><Button variant="ghost"><Link to="/profiles">Profiles</Link></Button></li>
-                <li className="list-items"><Button fontWeight="700" textTransform="uppercase" variant="ghost"> <a href="https://nickapic.github.io/"  target="_blank">Resources</a></Button></li>
-                <li className="list-items"><Button colorScheme="green" marginLeft="15px" ><Link to="/login">Login</Link></Button></li>
 
-            </ul>   
-    )
-    return (
         <div className="navbar">
             <h3 className="nav-heading-wrapper">
-            <Button variant="ghost" fontWeight="700"><a href="/">Project Aloha Oy</a></Button>
+            <Text variant="ghost" as={Link} fontWeight="700" fontSize="xl" to="/">Project Aloha Oy</Text>
             </h3>
+            { !loading && ( <Fragment>
+                <ul className="nav-links">
+                    <li className="list-items"><Button colorScheme="green" marginLeft="15px" as={Link} to="/login" >Login</Button></li>
+                </ul>   
+            </Fragment> )}
+        </div>
+    )
+    return (
+            <Fragment>
             { !loading && ( <Fragment>
                { isAuthenticated ? authLinks : guestLinks }
             </Fragment> ) }
-        </div>
+            </Fragment>
     );
 }
 

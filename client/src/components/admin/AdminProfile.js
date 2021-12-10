@@ -1,34 +1,34 @@
 import React, {useEffect} from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { getJobs } from '../../actions/job'
 import { Spinner } from '../../components/Spinner'
-import AdminJobItem from './AdminJobItem'
 import {
-    Table,Thead,Tbody,Tfoot,Tr,Th,Td,TableCaption,
+    Table,Thead,Tbody,Tr,Th,TableCaption,
   } from '@chakra-ui/react';
+import AdminProfileItem from './AdminProfileItem'
+import { getUsers } from '../../actions/auth'
 
-const AdminJobs = ({ getJobs , job:{
-    jobs, loading
+const AdminProfiles = ({ getUsers , auth:{
+    users, loading 
 } }) => {
     useEffect(() => {
-        getJobs();
+        getUsers();
     }, []);
     return loading ? <Spinner/> : (
         <div >
            <Table width="70%" marginTop="2rem">
-            <TableCaption>Jobs</TableCaption>
+            <TableCaption>Users</TableCaption>
                 <Thead>
                     <Tr>
-                    <Th> Job Name </Th>
-                    <Th> Job Description </Th>
-                    <Th> Job Description </Th>
+                    <Th> User Name </Th>
+                    <Th> User Email </Th>
+                    <Th> User Profile Id </Th>
                     <Th> deleteAccount </Th>
                     </Tr>
                 </Thead>
                 <Tbody>
-               {jobs.map( job => (
-                   <AdminJobItem key={job._id} job={job}/>
+               {users.map( user => (
+                   <AdminProfileItem key={user._id} user={user}/>
                ))}
                </Tbody>
             </Table>
@@ -36,11 +36,11 @@ const AdminJobs = ({ getJobs , job:{
     )
 }
 
-AdminJobs.propTypes = {
+AdminProfiles.propTypes = {
 }
 
 const mapStateToProps = state => ({
-    job: state.job
+    auth: state.auth
 })
 
-export default  connect(mapStateToProps, {getJobs})(AdminJobs);
+export default  connect(mapStateToProps, {getUsers})(AdminProfiles);

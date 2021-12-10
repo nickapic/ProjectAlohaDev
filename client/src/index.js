@@ -2,10 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { ChakraProvider } from '@chakra-ui/react'
+import { ChakraProvider, extendTheme } from '@chakra-ui/react';
+import {createBreakpoints} from "@chakra-ui/theme-tools";
+
+const breakpoints = createBreakpoints({
+  sm: '320px',
+  md: '768px',
+  lg: '960px',
+  xl: '1200px',
+  '2xl': '1536px',
+})
+const theme = extendTheme({breakpoints})
 
 ReactDOM.render(
-  <ChakraProvider>
+  <ChakraProvider theme={theme}>
   <React.StrictMode>
     <App />
   </React.StrictMode>

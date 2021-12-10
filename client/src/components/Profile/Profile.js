@@ -8,6 +8,10 @@ import ProfilePage from './ProfilePage';
 import "./profilepage.css"
 import ProfileExperience from './ProfileExperience';
 import ProfileEducation from './ProfileEducation';
+import { Button } from '@chakra-ui/button';
+import Experience from '../dashboard/Experience';
+import Education from '../dashboard/Education';
+import { Text } from '@chakra-ui/layout';
 const Profile = ({ getProfileById , profile: {profile, loading}, auth, match }) => {
     useEffect(() => {
         console.log(match.params.id)
@@ -18,27 +22,24 @@ const Profile = ({ getProfileById , profile: {profile, loading}, auth, match }) 
             { profile === null || loading ? <Spinner/> : (
             <div className="profile-page-container"> 
                 <ProfilePage profile={profile}/>
-                <h3>Experience</h3>
+                <Text fontSize="2xl" fontWeight="bold">Experience</Text>
                 { profile.experience.length > 0 ? (
-                    profile.experience.map(experience => (
-                        <ProfileExperience key={experience._id} experience={experience}/>
-                    ))
+                         <Experience experience={profile.experience}/>
                 ) : 
                 (
-                    <h4>No experience was added</h4> 
+                    <Text fontSize="lrem">No experience was added</Text> 
                 )}
 
-                <h3>Education</h3>
+                <Text fontSize="2xl" fontWeight="bold">Education</Text>
                 {
                     profile.education.length > 0 ? (
-                    profile.education.map(education => (
-                        <ProfileEducation key={education._id} education={education}/>
-                    ))) : (
-                        <h4>No Education was added</h4>
+                        <Education education={profile.education}/>
+                    ) : (
+                        <Text fontSize="1rem">No Education was added</Text>
                     ) 
                 }
-                <Link to="/profiles" className="main-button">Go Back</Link> 
-                {auth.isAuthenticated && auth.loading === false && auth.user._id === profile.user._id && (<Link to='/profile' className="main-button">Edit Profile</Link>)}
+                <Button colorScheme="red" marginTop="1rem" marginRight="1rem" as={Link} to="/profiles" >Go Back</Button>
+                {auth.isAuthenticated && auth.loading === false && auth.user._id === profile.user._id && (<Button colorScheme="teal" marginTop="1rem" ><Link to='/profile'>Edit Profile</Link></Button>)}
             </div> ) }
         </div> 
     )

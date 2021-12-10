@@ -1,4 +1,4 @@
-import React , { Fragment} from 'react'
+import React  from 'react'
 import PropTypes from 'prop-types';
 import Moment from 'react-moment';
 import {connect } from 'react-redux';
@@ -9,29 +9,28 @@ import { Button } from '@chakra-ui/button';
 const Experience = ({ experience, deleteExperience}) => {
     
     const expereinces = experience.map(exp => (
-        <Fragment>
-            <Td key={exp._id}></Td>
-            <Td>{exp.company}</Td>
-            <Td >{exp.title}</Td>
-            <Td>
+        <Tr>
+            <Td fontSize="1rem">{exp.company}</Td>
+            <Td fontSize="1rem">{exp.title}</Td>
+            <Td fontSize="1rem">
                 <Moment format='YYYY/MM/DD'>{exp.from}</Moment> - {
                     exp.to == null ? ('Now') : (<Moment format='YYYY/MM/DD'>{exp.to}</Moment>)
                 }
             </Td>
             <Td>
-                <Button onClick={() => deleteExperience(exp._id)} className="table-button">Delete</Button>
+                <Button colorScheme="red" onClick={() => deleteExperience(exp._id)} className="table-button">Delete</Button>
             </Td>
-        </Fragment>
+        </Tr>
     ))
     return (
         <div className="experience-container">
-            <h3 className="profile-primary">My Experiences</h3>
-                <Table className="table" size="sm">
+                <Table variant="simple" width="40%" marginTop="2rem">
                     <Thead>
-                    <Tr className="table-section">
+                    <Tr >
                         <Th>Company</Th>
                         <Th >Title</Th>
                         <Th >Years</Th>
+                        <Th> Delete</Th>
                     </Tr>
                     </Thead>
                     <Tbody>{expereinces}</Tbody>

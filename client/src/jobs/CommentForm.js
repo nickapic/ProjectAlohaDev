@@ -2,6 +2,8 @@ import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { addComment } from '../actions/job'
+import { Textarea } from '@chakra-ui/textarea'
+import { Button } from '@chakra-ui/button'
 
 const CommentForm = ({ jobId, addComment}) => {
     const [text, setText] = useState('');
@@ -12,7 +14,7 @@ const CommentForm = ({ jobId, addComment}) => {
                 addComment(jobId,{text});
                 setText("");
             }}>
-            <textarea
+            <Textarea
                 name="description"
                 cols="30"
                 rows="5"
@@ -20,8 +22,9 @@ const CommentForm = ({ jobId, addComment}) => {
                 value={text}
                 required
                 onChange={e => setText(e.target.value)}
-                ></textarea>
-                <input type="submit" className="job-button-form" value="Submit"/>
+                ></Textarea>
+                <Button type="submit"colorScheme="teal" className="form-input-btn" value="Submit"> Submit </Button>
+
             </form>
         </div>
     )

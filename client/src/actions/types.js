@@ -25,5 +25,9 @@ export const GET_JOB = 'GET_JOB';
 export const ADD_COMMENT = 'ADD_COMMENT';
 export const REMOVE_COMMENT = 'REMOVE_COMMENT';
 export const GET_USERS = "GET_USERS";
+export const GET_RESOURCE = "GET_RESOURCE";
+export const GET_RESOURCES = "GET_RESOURCES";
 export const USER_ERROR = "USER_ERROR"
+export const RESOURCE_ERROR = "RESOURCE_ERROR"
+
 

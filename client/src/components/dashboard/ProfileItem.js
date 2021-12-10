@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom'
 import './profileitem.css'
 import { Box, Flex, Spacer } from '@chakra-ui/react'
 import { Button } from '@chakra-ui/button'
-import { Center, ListItem, UnorderedList } from '@chakra-ui/layout'
+import { Center, ListItem, Text, UnorderedList } from '@chakra-ui/layout'
+import { Avatar } from '@chakra-ui/avatar'
 
 const ProfileItem = ({ profile: {
     user: { _id, name, avatar},
@@ -14,29 +15,32 @@ const ProfileItem = ({ profile: {
     skills
 }}) => {
     return (
-        <Box w="90%"  borderRadius='lg' className="profile-items">
-            <img src={avatar} alt="" className="profile-image"/>
-            <Flex className="profile-item" flexDirection="row" w="25%">
+        <Flex w="90%" bg="black" p={6} borderRadius='lg' marginTop="1rem" >
+            <Flex  flexDirection="row" w="15%" justifyContent="center" alignItems="center" marginLeft="1rem">
+                <Avatar src={avatar} alt=""  marginRight="2rem"/>
                 <Center flexDirection="column" >
-                <h2 className="profile-information"> {name}</h2>
-                <p className="profile-information">{status} {company && <span> at {company}</span>}</p>
-                <p className="profile-information">{ location && <span>{location}</span>}</p>
+                <Text color="white"> {name}</Text>
+                <Text color="white">{status} {company && <span> at {company}</span>}</Text>
+                <Text color="white">{ location && <span>{location}</span>}</Text>
                 </Center>
-            <UnorderedList flexDirection="column" marginLeft="30px" >
+            </Flex>
+            <UnorderedList flexDirection="column" marginLeft="4rem" >
                 {skills.slice(0,4).map((skill, index) => (
-                    <ListItem key={index} className="profile-skills-item" color="white">
+                    <ListItem key={index} fontSize="1rem" color="white">
                         <span>{skill}</span>
                     </ListItem>
                 ))}
             </UnorderedList>
             <Spacer/>
-            </Flex>
-              <Button ><Link to={`/profile/${_id}`} >
+            <Flex align="center" marginRight="20px"> 
+            <Button ><Link to={`/profile/${_id}`} >
                     View Profile
-                </Link></Button>
+            </Link></Button>
+            </Flex>
+             
            
 
-        </Box>
+        </Flex>
     )
 }
 

@@ -4,7 +4,7 @@ import { Route, Redirect } from 'react-router-dom'
 import {connect} from 'react-redux';
 
 const AdminRoute = ({ component: Component, auth:{ isAuthenticated, loading, isAdmin}, ...rest }) => (
-    <Route {...rest} render={props => !isAdmin && !loading ? ( <Redirect to='/login'/>) : (<Component {...props} />)} />
+    <Route {...rest} render={props =>  !isAuthenticated && !loading  ? ( <Redirect to='/login'/>) : ( isAdmin ? <Component {...props} /> : "You are not allowed to access this route.")} />
 )
 AdminRoute.propTypes = {
     auth: PropTypes.object.isRequired

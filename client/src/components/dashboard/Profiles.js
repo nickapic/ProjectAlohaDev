@@ -5,6 +5,7 @@ import { getProfiles } from '../../actions/profile'
 import { Spinner } from '../Spinner'
 import { Fragment } from 'react'
 import ProfileItem from './ProfileItem'
+import { Flex } from '@chakra-ui/layout'
 
 const Profiles = ({ getProfiles, profile: {profiles, loading}}) => {
     useEffect(()=>{
@@ -17,13 +18,13 @@ const Profiles = ({ getProfiles, profile: {profiles, loading}}) => {
                 <p className="profile-secondary">
                     Connect with Security Specialists on the website here
                 </p>
-                <div className="profiles">
+                <Flex className="profiles" flexDirection="column" alignContent="center">
                     {
                         profiles.length > 0 ? (
                             profiles.map(profile => (
                             <ProfileItem key={profile._id} profile={profile} />
                         )) ) : <h4> No profiles yet ..</h4> } 
-                </div>
+                </Flex>
             </Fragment>}
         </div>
     )

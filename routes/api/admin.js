@@ -138,5 +138,35 @@ router.post('/login', [
 });
 
 
+router.delete('/job/:jobid',auth,isAdmin,  async(req,res) => {
+    try {
+        const job = await Job.findById(req.params.jobid);
+        if(!job){
+            return res.status(404).json({msg : 'Job not found'})
+        }
+        //Check if the User is the Admin
+        await job.remove();
+        res.json({msg: 'Job Removed'})
 
+    } catch (err) {
+        console.error(err.message)
+        if(err.kind === 'ObjectId'){
+            return res.status(404).json({msg : 'Job not found'})
+        }
+        res.status(500).send('Server Error')
+    }
+})
+
+router.delete('/user/:userid', auth, isAdmin, async(req,res) => {
+    try {
+        // Todo remove users posts as well.
+        await Profile.findOneAndRemove({ user: req.params.userid });
+        // Remove User
+        await User.findOneAndDelete({ _id: req.params.userid });
+        res.json({ msg:'User Deleted'})
+    } catch (err) {
+        console.error(err.message)
+        res.status(500).send('Server Error occured')        
+    }
+})
 module.exports = router;

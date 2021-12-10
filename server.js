@@ -4,12 +4,13 @@ const xss = require("xss-clean");
 const hpp = require("hpp");
 const mongoSanitize = require("express-mongo-sanitize");
 const path = require('path')
-
+const cors = require("cors")
 const app = express();
 
 connectDB();
 
- app.use(express.json({
+
+app.use(express.json({
     extended: false
 }))
 // Defining port like so for the hosting enviornment to understand
@@ -27,6 +28,7 @@ app.use('/api/users', require('./routes/api/users'));
 app.use('/api/jobs', require('./routes/api/jobs'));
 app.use('/api/profile', require('./routes/api/profile'));
 app.use('/api/auth', require('./routes/api/auth'));
+app.use("/api/resource", cors(), require('./routes/api/resources'))
 app.use('/api/admin_projectalohaoy', require("./routes/api/admin"))
 
 if(process.env.NODE_ENV === 'production'){

@@ -73,6 +73,22 @@ export const deleteJob = id => async dispatch => {
     }
 }
 
+export const adminDeleteJob = id => async dispatch => {
+    try {
+        const res = await axios.delete(`/api/admin_projectalohaoy/job/${id}`)
+        dispatch({
+            type: DELETE_JOB,
+            payload: id
+        });
+        dispatch(setAlert('Job has been removed', 'success'));
+    } catch (err) {
+        dispatch({
+            type: JOB_ERROR,
+            payload: { msg: err.response.statusText , status: err.response.statis}
+        })
+    }
+}
+
 export const addJob = formData => async dispatch => {
     const config = {
         headers: {

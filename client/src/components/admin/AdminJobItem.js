@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import Moment from 'react-moment'
 import {connect} from 'react-redux'
-import { addLike, removeLike, deleteJob} from '../../actions/job'
+import {adminDeleteJob} from '../../actions/job'
 import { Button } from '@chakra-ui/button';
 import ButtonGroup from 'antd/lib/button/button-group'
 import {
@@ -12,7 +12,7 @@ import {
 
 
 const AdminJobItem = ({
-    addLike, removeLike, deleteJob, 
+     adminDeleteJob, 
     auth, job : { _id, description,name,avatar, company, user, title,likes, comments,date} 
 }) => {
     return (
@@ -21,7 +21,7 @@ const AdminJobItem = ({
                     <Td> {description} </Td>
                     <Td> {likes.length} </Td>
                     <Td> 
-                    <Button colorScheme="red" onClick={ e => deleteJob(_id) } type="button" >
+                    <Button colorScheme="red" onClick={ e => adminDeleteJob(_id) } type="button" >
                         Delete
                     </Button>  </Td>
                     </Tr>
@@ -39,4 +39,4 @@ AdminJobItem.propTypes = {
 const mapStateToProps = state => ({
     auth: state.auth
 });
-export default connect(mapStateToProps,{ addLike, removeLike, deleteJob})(AdminJobItem);
+export default connect(mapStateToProps,{ adminDeleteJob})(AdminJobItem);

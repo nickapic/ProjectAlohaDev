@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@ajna/pagination": "^1.4.13",
     "@chakra-ui/react": "^1.7.2",
     "@emotion/react": "^11.7.0",
     "@emotion/styled": "^11.6.0",
@@ -14,7 +15,9 @@
     "framer-motion": "^4.1.17",
     "moment": "^2.29.1",
     "react": "^17.0.1",
+    "react-cookie-consent": "^7.0.0",
     "react-dom": "^17.0.1",
+    "react-markdown": "^7.1.1",
     "react-moment": "^1.1.1",
     "react-redux": "^7.2.6",
     "react-router-dom": "^5.3.0",

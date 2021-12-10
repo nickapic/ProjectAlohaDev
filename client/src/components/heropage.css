@@ -1,13 +1,12 @@
 .hero-page {
   display: flex;
-  width: 80%;
-  margin-left: auto;
+  width: 100%;
+  align-items: center;
   margin-right: auto;
+  margin-top: 4rem;
 }
 .right-side {
-  margin-top: 10rem;
   width: 50%;
-  margin-left: 1rem;
 }
 .right-heading {
   width: 100%;
@@ -30,5 +29,10 @@
 }
 .left-side {
   width: 50%;
-  margin-top: 5rem;
+}
+
+.heropage-link {
+  font-weight: 400;
+  text-transform: lowercase;
+  border-bottom: 3px black solid;
 }

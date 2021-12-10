@@ -2,19 +2,17 @@ import React from 'react'
 import PropTypes from 'prop-types';
 import Moment from "react-moment";
 import { connect } from 'react-redux';
-import { Fragment } from 'react';
 import { deleteEducation } from '../../actions/profile';
 import { Td, Th, Table, Tr, Thead, Tbody } from '@chakra-ui/table';
 import { Button } from '@chakra-ui/button';
 
 const Education = ({ education, deleteEducation }) => {
     const educations = education.map( edu => (
-        <div className="table-section">
 
-        <Td key={edu._id}>
-        <Td>{edu.school}</Td>
-        <Td className="hide-sm">{edu.degree}</Td>
-        <Td>
+        <Tr>
+        <Td fontSize="1rem">{edu.school}</Td>
+        <Td fontSize="1rem">{edu.degree}</Td>
+        <Td fontSize="1rem">
           <Moment format='YYYY/MM/DD'>{edu.from}</Moment> - {edu.to == null ? ('Now') : (<Moment format='YYYY/MM/DD'>{edu.to}</Moment>)}
         </Td>
         <Td>
@@ -25,23 +23,22 @@ const Education = ({ education, deleteEducation }) => {
             Delete
             </Button>
         </Td>
-        </Td>
-                </div>
+        </Tr>
 
     ));
     return (
         <div >
             <h2 className="profile-primary">My Education</h2>
-            <Table className="table" size="sm">
+            <Table  variant="simple" width="40%" marginTop="2rem">
                 <Thead>
-                <Tr className="table-section">
+                <Tr>
                     <Th>School</Th>
-                    <Th className="hide-sm">Degree</Th>
-                    <Th className="hide-sm">Years</Th>
-                    <Th />
+                    <Th >Degree</Th>
+                    <Th >Years</Th>
+                    <Th> Delete </Th>
                 </Tr>
                 </Thead>
-                <Tbody className="table-special">{educations}</Tbody>
+                <Tbody>{educations}</Tbody>
             </Table>
         </div>
     )

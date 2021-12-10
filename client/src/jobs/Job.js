@@ -17,7 +17,7 @@ const Job = ({ getJob, job: { job , loading} , match}) => {
 
     
     return (
-        <div className="job-page">
+    <div className="job-page">
 
     { job === null || loading ? <Spinner/> : (
     <Fragment>

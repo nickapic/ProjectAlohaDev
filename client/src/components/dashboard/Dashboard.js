@@ -3,15 +3,16 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getCurrentProfile} from '../../actions/profile'
 import { Spinner } from '../Spinner';
-import { loadUser } from '../../actions/auth';
 import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import './Dashboard.css'
 import Actions from './Actions';
-import Experience from './Experience';
-import Education from './Education';
 import { Button } from '@chakra-ui/button';
-import { Text } from '@chakra-ui/layout';
+import { Box, Flex, Text, Spacer } from '@chakra-ui/layout';
+import { ReactComponent as ProfileLogo} from "../../profile.svg"
+import Jobs from '../../jobs/Jobs';
+import Resources from '../resources/Resources';
+import UserDashboard from './UserDashboard.js'
 
 const Dashboard = ({getCurrentProfile, auth: {user}, profile: { profile, loading }}) => {
     useEffect(() => {
@@ -19,19 +20,22 @@ const Dashboard = ({getCurrentProfile, auth: {user}, profile: { profile, loading
     }, []);
     return (  loading && profile == null ? <Spinner/> : 
     <Fragment> 
-        <div className="container-dashboard">
+        <div className="container-dashboardjs">
         <Text className="primary-text">Dashboard</Text>
-        <p className="primary-greeting">Welcome {user && user.name},</p>
+        <Text fontSize="1.5rem">Welcome,</Text>
+        <Text fontSize="1rem"> This is where you can set up your Profile, Experiences, Find Jobs and resources cattered to you.</Text>
         {
-            profile !== null ? <Fragment> 
-                <Actions/> 
-                <Experience experience={profile.experience}/>
-                <Education education={profile.education}/>s
-                </Fragment> : <Fragment>
-                <p className="primary-warning"> You have not yet setup a profile, please create a profile and increase your visibility on the platform</p>
-                <Button colorScheme="teal"><Link to="/profile" >Create Profile</Link></Button>
-        
-            </Fragment>
+            profile !== null ?  <UserDashboard/> : <Box>
+                <Flex height="30rem" width="90%" direction="row" align="center">
+                    <Box marginTop="2rem" width="42%" h="15rem" bg="#F1F1F1" borderRadius="lg"padding="2rem" boxShadow="md">
+                    <Text fontSize='xl' marginBottom="1rem" textTransform="capitalize">You have not yet setup a profile, please create a profile and increase your visibility on the platform</Text>
+                    <Button colorScheme="teal" as={Link} to="/profile">Create Profile</Button>
+                    </Box>
+                    <Box width="60%">
+                        <ProfileLogo />
+                    </Box>
+                </Flex>
+            </Box>
         }
         </div>
     </Fragment>

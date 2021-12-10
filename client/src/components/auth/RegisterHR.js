@@ -5,18 +5,16 @@ import { connect } from 'react-redux';
 import {setAlert} from '../../actions/alert';
 import {register} from '../../actions/auth';
 import { Button } from '@chakra-ui/button';
-
 import PropTypes from 'prop-types'
-import { Select } from '@chakra-ui/react';
 
 
-const Register = ({ setAlert, register, isAuthenticated }) => {
+const RegisterHR = ({ setAlert, register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
     password2: "",
-    role: "user"
+    role: "company"
   });
   const { name, email, password, password2, role } = formData;
   const onChange = (e) =>
@@ -30,6 +28,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
         setAlert('Passwords do not Match', 'warning')
     } else {
       register({name,email, password, role })
+      console.log(role, name)
   };
 };
   if(isAuthenticated){
@@ -37,7 +36,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
   }
   return (
     <div className="form-section" onSubmit={(e) => onSubmit(e)}>
-      <h2 className="form-section_label">Register here</h2>
+      <h2 className="form-section_label">Register as a Company here</h2>
       <form className="form-section_form">
         <div className="form-control">
           <label className="form-label" htmlFor="name">
@@ -49,7 +48,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
             id="name"
             className="form-input"
             placeholder="Name here"
-            pattern="[a-zA-Z\s]+"
+            pattern="[a-zA-Z]+"
             title="Please enter Alphabets."
             value={name}
             onChange={(e) => onChange(e)}
@@ -111,7 +110,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
   );
 };
 
-Register.propTypes = {
+RegisterHR.propTypes = {
   setAlert: PropTypes.func.isRequired,
   register: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool,
@@ -119,4 +118,4 @@ Register.propTypes = {
 const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated
 })
-export default connect(mapStateToProps, {setAlert, register})(Register);
+export default connect(mapStateToProps, {setAlert, register})(RegisterHR);

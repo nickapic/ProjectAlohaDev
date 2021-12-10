@@ -1,16 +1,27 @@
 html {
   box-sizing: border-box;
+  width: 100vw;
 }
+
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: "Readex Pro", sans-serif !important;
   background-color: #1d1e20;
+  margin: 0 auto;
 }
 
 .App {
-  font-family: "Poppins", sans-serif;
+  font-family: "Readex Pro", sans-serif;
   background-color: #1d1e20;
 }
-a {
+.app-container {
+  width: 80vw;
+  margin: auto;
+}
+
+a,
+a:hover,
+a:visited,
+a:active {
   text-decoration: none !important;
 }
 .h3 {
@@ -51,6 +62,12 @@ a {
 .alert-dark {
   background: #343a40;
   color: #fff;
+}
+.padding-left {
+  padding-left: 15px;
+}
+.color-black {
+  color: black !important;
 }
 
 .btn-danger,
@@ -93,22 +110,30 @@ a {
   align-items: flex-start;
   justify-content: space-between;
 }
+@media only screen and (max-width: 1730px) {
+  .action-button {
+    font-size: 13px !important;
+  }
+}
 
 @media only screen and (max-width: 1630px) {
-  .nav-links {
-    width: 27%;
+  .action-button {
+    font-size: 12px !important;
   }
 }
 
 @media only screen and (max-width: 1470px) {
-  .nav-links {
-    width: 30%;
+  .action-button {
+    font-size: 10px !important;
   }
 }
 
 @media only screen and (max-width: 1300px) {
-  .nav-links {
-    width: 33%;
+  .action-button {
+    font-size: 10px !important;
+  }
+  .right-side-dashboard {
+    width: 47% !important;
   }
 }
 
@@ -124,10 +149,10 @@ a {
   html {
     font-size: 80%;
   }
-  .nav-links {
-    width: 100%;
-    justify-content: flex-end;
+  .action-button {
+    font-size: 9px !important;
   }
+
   .list-items {
     margin-left: 1rem;
   }
@@ -138,17 +163,44 @@ a {
     width: 90% !important;
   }
   .left-side {
-    width: 10% !important;
+    width: 90% !important;
   }
   .form-section {
     width: 50% !important;
     margin: 5rem auto !important;
   }
 }
+@media only screen and (max-width: 1100px) {
+  .right-side-dashboard {
+    width: 100% !important;
+  }
+  .dashboard-box {
+    flex-direction: column;
+  }
+  .jobs-box {
+    width: 95% !important;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  html {
+    font-size: 60%;
+  }
+  a {
+    font-size: 1rem;
+  }
+  .nav-heading {
+    font-size: 0.8rem;
+  }
+  .form-section {
+    width: 80% !important;
+    margin: 5rem auto !important;
+  }
+}
 
 @media only screen and (max-width: 700px) {
   html {
-    font-size: 70%;
+    font-size: 60%;
   }
   a {
     font-size: 1rem;
@@ -165,5 +217,17 @@ a {
   .form-section {
     width: 80% !important;
     margin: 5rem auto !important;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  html {
+    font-size: 55%;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  html {
+    font-size: 42%;
   }
 }

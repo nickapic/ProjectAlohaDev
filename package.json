@@ -8,15 +8,18 @@
     "server": "nodemon server",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "author": "Aniket Chauhan",
   "license": "ISC",
   "dependencies": {
+    "@chakra-ui/icons": "^1.1.1",
     "@emotion/react": "^11.6.0",
     "antd": "^4.15.5",
+    "axios": "^0.24.0",
     "bcryptjs": "^2.4.3",
     "config": "^3.3.6",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-mongo-sanitize": "^2.1.0",
     "express-validator": "^6.10.0",

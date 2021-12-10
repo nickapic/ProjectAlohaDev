@@ -9,7 +9,7 @@ const ProfilePage = ({
         company,
         location,
         website,
-        social,
+        bio,
         user: {name, avatar}
     }
 }) => {
@@ -28,6 +28,7 @@ const ProfilePage = ({
                     <p className="profile-description-text">
                         Website : {website}
                     </p>
+                    <p className="profile-description-text"> Bio : {bio}</p>
                 </div>
             </div>
         </div>

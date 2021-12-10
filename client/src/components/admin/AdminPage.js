@@ -4,10 +4,9 @@ import { connect } from 'react-redux';
 import { getCurrentProfile} from '../../actions/profile'
 import { Spinner } from '../Spinner';
 import { Fragment } from 'react';
-import { Link } from 'react-router-dom';
 import './Dashboard.css'
-import Actions from '../dashboard/Actions';
 import AdminJobs from './AdminJobs';
+import AdminProfile from './AdminProfile';
 
 
 const AdminPage = ({getCurrentProfile, auth: {user}, profile: { profile, loading }}) => {
@@ -20,6 +19,7 @@ const AdminPage = ({getCurrentProfile, auth: {user}, profile: { profile, loading
         <h1 className="primary-text">Dashboard</h1>
         <p className="primary-greeting">Welcome Admin </p>
         <AdminJobs/>
+        <AdminProfile/>
         </div>
     </Fragment>
     )

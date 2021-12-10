@@ -186,3 +186,23 @@ export const deleteAccount = (id) => async dispatch => {
     }
     
 }
+
+export const adminDeleteAccount = (id) => async dispatch => {
+        try{
+                const res = await axios.delete(`/api/admin_projectalohaoy/user/${id}`)
+                const res2 = await axios.get('/api/profile');
+                dispatch({
+                    type: GET_PROFILES,
+                    payload: res2.data
+                })
+
+                dispatch(setAlert("The account has been permanently deleted", "success"));
+
+            } catch(err){
+                dispatch({
+                    type: PROFILE_ERROR,
+                    payload: { msg: err.response.statusText, status: err.response.status }
+                })       
+            }
+    
+}
