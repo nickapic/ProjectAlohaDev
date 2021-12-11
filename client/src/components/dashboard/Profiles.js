@@ -10,7 +10,7 @@ import { Flex } from '@chakra-ui/layout'
 const Profiles = ({ getProfiles, profile: {profiles, loading}}) => {
     useEffect(()=>{
         getProfiles();
-    }, []);
+    }, [getProfiles]);
     return (
         <div className="profile-container">
             { loading ? <Spinner/> : <Fragment>

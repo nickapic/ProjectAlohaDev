@@ -36,7 +36,6 @@ const UserDashboard = ({getCurrentProfile, auth: {user , role }, profile: { prof
                     <Button as={Link} fontSize="0.75rem" colorScheme="teal" to="/jobs" marginTop="1rem"  marginLeft="2px">See all Jobs</Button>
                 </Box>
         </Flex>
-        
     </Fragment>
     )
 }

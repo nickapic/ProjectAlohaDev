@@ -13,7 +13,7 @@ const AdminProfiles = ({ getUsers , auth:{
 } }) => {
     useEffect(() => {
         getUsers();
-    }, []);
+    }, [getUsers]);
     return loading ? <Spinner/> : (
         <div >
            <Table width="70%" marginTop="2rem">

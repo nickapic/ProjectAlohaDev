@@ -13,7 +13,7 @@ import { ReactComponent as ProfileLogo} from "../../profile.svg"
 import Jobs from '../../jobs/Jobs';
 import Resources from '../resources/Resources';
 import Profiles from "./Profiles" 
-const UserDashboard = ({getCurrentProfile, auth: {user , role }, profile: { profile, loading }}) => {
+const HRDashboard = ({getCurrentProfile, auth: {user , role }, profile: { profile, loading }}) => {
     useEffect(() => {
         getCurrentProfile();
     }, []);
@@ -39,7 +39,7 @@ const UserDashboard = ({getCurrentProfile, auth: {user , role }, profile: { prof
     </Fragment>
     )
 }
-UserDashboard.propTypes = {
+HRDashboard.propTypes = {
     getCurrentProfile: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
     profile: PropTypes.object.isRequired,
@@ -49,4 +49,4 @@ const mapStateToProps = state => ({
     auth: state.auth,
     profile: state.profile
 })
-export default connect(mapStateToProps, {getCurrentProfile})(UserDashboard);
+export default connect(mapStateToProps, {getCurrentProfile})(HRDashboard);

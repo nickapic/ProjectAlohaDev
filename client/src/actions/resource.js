@@ -7,7 +7,6 @@ export const getResources = () => async dispatch => {
     try {
         const res = await axios.get('/api/resource')
         const data = res.data.data
-        console.log(data)
         dispatch({
             type: GET_RESOURCES,
             payload: data

@@ -18,7 +18,7 @@ import {
   } from '@chakra-ui/react'
 
 const AdminProfileItem = ({
-     admin, 
+    admin, 
     auth, user : { _id, name, email,isAdmin } ,
     adminDeleteAccount
 }) => {
