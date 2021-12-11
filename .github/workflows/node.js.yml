@@ -6,16 +6,15 @@
 
 name: Node.js CI
 
-# When ever we merge to master branch or get a 
+# When ever we merge to master branch or get a
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build:
-
     runs-on: self-hosted
 
     strategy:
@@ -24,11 +23,12 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
     # First part is default
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm run postbuild
-    - run: npm test
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+      - run: npm i
+      - run: cd client && npm i
+      - run: npm test

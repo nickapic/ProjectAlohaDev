@@ -10,7 +10,6 @@ import { Avatar } from '@chakra-ui/avatar'
 const ProfileItem = ({ profile: {
     user,
     status,
-    company,
     location,
     skills
 }}) => {
@@ -19,9 +18,9 @@ const ProfileItem = ({ profile: {
             <Flex  flexDirection="row" w="15%" justifyContent="center" alignItems="center" marginLeft="2rem">
                 <Avatar src={user.avatar} alt=""  marginRight="2rem"/>
                 <Center flexDirection="column" >
-                <Text color="white"> {user.name}</Text>
-                <Text color="white">{status} {company && <span> at {company}</span>}</Text>
-                <Text color="white">{ location && <span>{location}</span>}</Text>
+                <Text color="white" fontSize="0.75rem"> {user.name}</Text>
+                <Text color="white" fontSize="0.75rem">{status}</Text>
+                <Text color="white" fontSize="0.75rem" >{ location && <span>{location}</span>}</Text>
                 </Center>
             </Flex>
             <UnorderedList flexDirection="column" marginLeft="4rem" >
@@ -35,9 +34,6 @@ const ProfileItem = ({ profile: {
             <Flex align="center" marginRight="15px"> 
             <Button as={Link} to={`/profile/${user._id}`} fontSize="0.75rem">View Profile</Button>
             </Flex>
-             
-           
-
         </Flex>
     )
 }
