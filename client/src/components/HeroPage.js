@@ -37,7 +37,7 @@ const HeroPage = ({ isAuthenticated }) => {
             </div>
             <div className="right-side">
                 <Text fontSize="xl" fontWeight="bold">What Features does Project Aloha Oy have?</Text>
-                <h3 className="right-subheading">Project Aloha Oy as of now provides the ability to access resources, post jobs, access jobs, provide recommendations for requirements. </h3>
+                <h3 className="right-subheading">Project Aloha Oy as of now provides the ability to access resources, post jobs, access jobs, provide recommendations for resources, for pentesters to share their resources, for which they would first have to contact us at our email : nickapic@wearehackerone.com </h3>
                 <Text fontSize="xl" fontWeight="bold">How do we deal with privacy on this platform?</Text>
                 <h3 className="right-subheading">We do not use any tracking cookies for this solution, only one essential cookie is used which is used for authorization and authentication of the user to access the platform. You can also see our privacy policy here {<Text  as={Link} to="/gdpr" className="heropage-link" fontStyle="normal"> Privacy Policy</Text>}</h3>
             </div>

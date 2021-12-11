@@ -7,9 +7,18 @@ import {adminDeleteJob} from '../../actions/job'
 import { Button } from '@chakra-ui/button';
 import ButtonGroup from 'antd/lib/button/button-group'
 import {
-    Table,Thead,Tbody,Tr,Th,Td,TableCaption,
+    Tr,Td
   } from '@chakra-ui/react'
-
+  import {
+    Popover,
+    PopoverTrigger,
+    PopoverContent,
+    PopoverHeader,
+    PopoverBody,
+    PopoverArrow,
+    PopoverCloseButton,
+    Portal,
+  } from '@chakra-ui/react'
 
 const AdminJobItem = ({
      adminDeleteJob, 
@@ -21,20 +30,32 @@ const AdminJobItem = ({
                     <Td> {description} </Td>
                     <Td> {likes.length} </Td>
                     <Td> 
-                    <Button colorScheme="red" onClick={ e => adminDeleteJob(_id) } type="button" >
-                        Delete
-                    </Button>  </Td>
+                    <Popover>
+                    <PopoverTrigger>
+                      <Button colorScheme="red">Delete</Button>
+                    </PopoverTrigger>
+                    <Portal>
+                      <PopoverContent>
+                        <PopoverArrow />
+                        <PopoverHeader>Confirm you want to delete the Job?</PopoverHeader>
+                        <PopoverCloseButton />
+                        <PopoverBody>
+                        <Button colorScheme="red" onClick={ e => adminDeleteJob(_id) } type="button" >
+                            Confirm 
+                        </Button>
+                        </PopoverBody>
+                      </PopoverContent>
+                    </Portal>
+                    </Popover>
+                    </Td>
                     </Tr>
                 
     )
 }
 
 AdminJobItem.propTypes = {
-    job: PropTypes.object.isRequired,
     auth: PropTypes.object.isRequired,
-    addLike: PropTypes.func.isRequired,
-    removeLike: PropTypes.func.isRequired,
-    deleteJob: PropTypes.func.isRequired,
+    adminDeleteJob: PropTypes.func.isRequired,
 }
 const mapStateToProps = state => ({
     auth: state.auth

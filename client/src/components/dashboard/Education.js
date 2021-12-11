@@ -5,7 +5,16 @@ import { connect } from 'react-redux';
 import { deleteEducation } from '../../actions/profile';
 import { Td, Th, Table, Tr, Thead, Tbody } from '@chakra-ui/table';
 import { Button } from '@chakra-ui/button';
-
+import {
+    Popover,
+    PopoverTrigger,
+    PopoverContent,
+    PopoverHeader,
+    PopoverBody,
+    PopoverArrow,
+    PopoverCloseButton,
+    Portal,
+  } from '@chakra-ui/react'
 const Education = ({ education, deleteEducation }) => {
     const educations = education.map( edu => (
 
@@ -16,12 +25,23 @@ const Education = ({ education, deleteEducation }) => {
           <Moment format='YYYY/MM/DD'>{edu.from}</Moment> - {edu.to == null ? ('Now') : (<Moment format='YYYY/MM/DD'>{edu.to}</Moment>)}
         </Td>
         <Td>
-            <Button
-            onClick={() => deleteEducation(edu._id)}
-            className="table-button"
-            >
-            Delete
-            </Button>
+            <Popover>
+                <PopoverTrigger>
+                    <Button colorScheme="red">Delete</Button>
+                </PopoverTrigger>
+                <Portal>
+                    <PopoverContent>
+                    <PopoverArrow />
+                    <PopoverHeader>Confirm you want to delete the profile of this user?</PopoverHeader>
+                    <PopoverCloseButton />
+                    <PopoverBody>
+                    <Button colorScheme="red" onClick={ e => deleteEducation(edu._id) } type="button" >
+                        Confirm 
+                    </Button>
+                    </PopoverBody>
+                    </PopoverContent>
+                </Portal>
+            </Popover>  
         </Td>
         </Tr>
 

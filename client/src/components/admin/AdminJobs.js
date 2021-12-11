@@ -22,7 +22,7 @@ const AdminJobs = ({ getJobs , job:{
                     <Tr>
                     <Th> Job Name </Th>
                     <Th> Job Description </Th>
-                    <Th> Job Description </Th>
+                    <Th> Job likes </Th>
                     <Th> deleteAccount </Th>
                     </Tr>
                 </Thead>

@@ -5,6 +5,16 @@ import {connect } from 'react-redux';
 import { deleteExperience} from '../../actions/profile'
 import { Td, Th, Table, Tr, Thead, Tbody } from '@chakra-ui/table';
 import { Button } from '@chakra-ui/button';
+import {
+    Popover,
+    PopoverTrigger,
+    PopoverContent,
+    PopoverHeader,
+    PopoverBody,
+    PopoverArrow,
+    PopoverCloseButton,
+    Portal,
+  } from '@chakra-ui/react'
 
 const Experience = ({ experience, deleteExperience}) => {
     
@@ -18,7 +28,23 @@ const Experience = ({ experience, deleteExperience}) => {
                 }
             </Td>
             <Td>
-                <Button colorScheme="red" onClick={() => deleteExperience(exp._id)} className="table-button">Delete</Button>
+                <Popover>
+                    <PopoverTrigger>
+                      <Button colorScheme="red">Delete</Button>
+                    </PopoverTrigger>
+                    <Portal>
+                      <PopoverContent>
+                        <PopoverArrow />
+                        <PopoverHeader>Confirm you want to delete the profile of this user?</PopoverHeader>
+                        <PopoverCloseButton />
+                        <PopoverBody>
+                        <Button colorScheme="red" onClick={ e => deleteExperience(exp._id) } type="button" >
+                            Confirm 
+                        </Button>
+                        </PopoverBody>
+                      </PopoverContent>
+                    </Portal>
+                </Popover>            
             </Td>
         </Tr>
     ))

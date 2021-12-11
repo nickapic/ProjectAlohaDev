@@ -6,7 +6,16 @@ import {
     Tr,Td
   } from '@chakra-ui/react'
 import { adminDeleteAccount } from '../../actions/profile'
-
+import {
+    Popover,
+    PopoverTrigger,
+    PopoverContent,
+    PopoverHeader,
+    PopoverBody,
+    PopoverArrow,
+    PopoverCloseButton,
+    Portal,
+  } from '@chakra-ui/react'
 
 const AdminProfileItem = ({
      admin, 
@@ -19,9 +28,23 @@ const AdminProfileItem = ({
                     <Td> {email} </Td>
                     <Td> {_id} </Td>
                     <Td> 
-                    <Button colorScheme="red" onClick={ e => adminDeleteAccount(_id) } type="button" >
-                        Delete
-                    </Button>  </Td>
+                    <Popover>
+                    <PopoverTrigger>
+                      <Button colorScheme="red">Delete</Button>
+                    </PopoverTrigger>
+                    <Portal>
+                      <PopoverContent>
+                        <PopoverArrow />
+                        <PopoverHeader>Confirm you want to delete the profile of this user?</PopoverHeader>
+                        <PopoverCloseButton />
+                        <PopoverBody>
+                        <Button colorScheme="red" onClick={ e => adminDeleteAccount(_id) } type="button" >
+                            Confirm 
+                        </Button>
+                        </PopoverBody>
+                      </PopoverContent>
+                    </Portal>
+                  </Popover></Td>
                     </Tr>
                 
     )
