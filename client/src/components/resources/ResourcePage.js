@@ -4,7 +4,9 @@ import profile from '../../reducers/profile'
 import { connect } from 'react-redux'
 import {getResource} from "../../actions/resource"
 import { Spinner } from '../Spinner'
-import ReactMarkdown from 'react-markdown'
+import ReactMarkdown from 'react-markdown';
+import style from './markdown-styles.module.css';
+
 const ResourcePage = ({ getResource, resource: { resource , loading } , match}) => {
     useEffect(() => {
         // console.log(match.params.id)
@@ -16,7 +18,7 @@ const ResourcePage = ({ getResource, resource: { resource , loading } , match}) 
         { resource === null || loading ? <Spinner/> :  ( 
             <div>
                 <p>{resource.data.attributes.title}</p>
-            <ReactMarkdown children={resource.data.attributes.content}/>
+            <ReactMarkdown  className={style.reactMarkDown} children={resource.data.attributes.content}/>
             </div>
            )
     }

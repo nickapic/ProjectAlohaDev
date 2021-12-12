@@ -14,18 +14,18 @@ import Jobs from '../../jobs/Jobs';
 import Resources from '../resources/Resources';
 import UserDashboard from './UserDashboard.js'
 
-const Dashboard = ({getCurrentProfile, auth: {user}, profile: { profile, loading }}) => {
+const Dashboard = ({getCurrentProfile, auth: {user, isAdmin }, profile: { profile, loading }}) => {
     useEffect(() => {
         getCurrentProfile();
-    }, []);
+    }, [getCurrentProfile]);
     return (  loading && profile == null ? <Spinner/> : 
     <Fragment> 
         <div className="container-dashboardjs">
         <Text className="primary-text">Dashboard</Text>
         <Text fontSize="1.5rem">Welcome,</Text>
         <Text fontSize="1rem"> This is where you can set up your Profile, Experiences, Find Jobs and resources cattered to you.</Text>
-        {
-            profile !== null ?  <UserDashboard/> : <Box>
+        
+        { profile !== null ?  <UserDashboard/> : <Box>
                 <Flex height="30rem" width="90%" direction="row" align="center">
                     <Box marginTop="2rem" width="42%" h="15rem" bg="#F1F1F1" borderRadius="lg"padding="2rem" boxShadow="md">
                     <Text fontSize='xl' marginBottom="1rem" textTransform="capitalize">You have not yet setup a profile, please create a profile and increase your visibility on the platform</Text>
