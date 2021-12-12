@@ -17,7 +17,7 @@ import HRDashboard from './HRDashboard';
 const UserDashboard = ({getCurrentProfile, auth: {user , role }, profile: { profile, loading }}) => {
     useEffect(() => {
         getCurrentProfile();
-    }, []);
+    }, [getCurrentProfile]);
     return (  role === "company" ? <HRDashboard/> : 
     <Fragment> 
         <Flex width="100%" align="flex-start" className="dashboard-box">
@@ -32,7 +32,7 @@ const UserDashboard = ({getCurrentProfile, auth: {user , role }, profile: { prof
         </Flex>
                 <Spacer/>
                 <Box marginTop="2rem" width="52%" h="40rem" bg="#F1F1F1" borderRadius="lg"padding="2rem" boxShadow="md" className="jobs-box" >
-                    <Jobs />
+                    <Jobs limit={3}/>
                     <Button as={Link} fontSize="0.75rem" colorScheme="teal" to="/jobs" marginTop="1rem"  marginLeft="2px">See all Jobs</Button>
                 </Box>
         </Flex>

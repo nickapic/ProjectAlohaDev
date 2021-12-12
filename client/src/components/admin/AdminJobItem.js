@@ -22,7 +22,7 @@ import {
 
 const AdminJobItem = ({
      adminDeleteJob, 
-    auth, job : { _id, description,name,avatar, company, user, title,likes, comments,date} 
+    auth, job : { _id, description,name,avatar, company, user, title,likes, comments,date}
 }) => {
     return (
                     <Tr>

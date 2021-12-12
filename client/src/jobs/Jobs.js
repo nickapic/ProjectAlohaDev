@@ -6,11 +6,11 @@ import { Spinner } from '../components/Spinner'
 import JobItem from './JobItem'
 const Jobs = ({ getJobs , job:{
     jobs, loading
-} }, ) => {
+}, limit } ) => {
     useEffect(() => {
         getJobs();
     }, []);
-    let showJobs = jobs.slice(0, 2);
+    let showJobs = jobs.slice(0, limit);
     return loading ? <Spinner/> : (
         <div >
            <h3 className="jobs-heading">Job Openings</h3>

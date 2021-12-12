@@ -31,7 +31,7 @@ const HRDashboard = ({getCurrentProfile, auth: {user , role }, profile: { profil
         </Flex>
                 <Spacer/>
                 <Box marginTop="2rem" width="52%" h="40rem" bg="#F1F1F1" borderRadius="lg"padding="2rem" boxShadow="md" className="jobs-box" >
-                    <Profiles />
+                    <Profiles limit={2}/>
                     <Button as={Link} fontSize="0.75rem" colorScheme="teal" to="/profiles" marginTop="1rem"  marginLeft="2px">See all profiles</Button>
                 </Box>
         </Flex>

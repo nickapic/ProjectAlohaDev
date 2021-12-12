@@ -7,10 +7,11 @@ import { Fragment } from 'react'
 import ProfileItem from './ProfileItem'
 import { Flex } from '@chakra-ui/layout'
 
-const Profiles = ({ getProfiles, profile: {profiles, loading}}) => {
+const Profiles = ({ getProfiles, profile: {profiles, loading}, limit}) => {
     useEffect(()=>{
         getProfiles();
     }, [getProfiles]);
+    const newProfiles = profiles.slice(0, limit)
     return (
         <div className="profile-container">
             { loading ? <Spinner/> : <Fragment>
@@ -20,8 +21,8 @@ const Profiles = ({ getProfiles, profile: {profiles, loading}}) => {
                 </p>
                 <Flex className="profiles" flexDirection="column" alignContent="center">
                     {
-                        profiles.length > 0 ? (
-                            profiles.map(profile => (
+                        newProfiles.length > 0 ? (
+                            newProfiles.map(profile => (
                             <ProfileItem key={profile._id} profile={profile} />
                         )) ) : <h4> No profiles yet ..</h4> } 
                 </Flex>

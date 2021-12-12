@@ -8,14 +8,12 @@ import './job.css'
 import CommentForm from './CommentForm'
 import CommentItem from './CommentItem'
 
-const Job = ({ getJob, job: { job , loading} , match}) => {
+const Job = ({ getJob, job: { job , loading} , match}, limit) => {
     useEffect(() => {
         console.log(match.params.id)
         getJob(match.params.id);
         console.log(job)
     }, [getJob])
-
-    
     return (
     <div className="job-page">
 

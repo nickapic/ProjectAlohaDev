@@ -72,10 +72,10 @@ const App = () => {
           buttonText="Understood"
           style={{ background: "#2B373B" }}
           buttonStyle={{ color: "#4e503b", fontSize: "13px" }}
-          debug={true}
+          expires={360000}
         > 
-  This website uses only essential cookies for Authentication and Authorization, no other cookies are used. To know more about our privacy please refer to our {<Link to="/gdpr" className="heropage-link">privacy policy</Link>}
-</CookieConsent>
+          This website uses only essential cookies for Authentication and Authorization, no other cookies are used. To know more about our privacy please refer to our {<Link to="/gdpr" className="heropage-link">privacy policy</Link>}
+        </CookieConsent>
     </div> 
     </Router>
     </Provider>

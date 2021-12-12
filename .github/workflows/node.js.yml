@@ -30,5 +30,4 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
       - run: npm i
-      - run: npm i --prefix client
-      - run: npm test
+      - run: echo "Nice One"
