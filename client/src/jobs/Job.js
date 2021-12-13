@@ -7,6 +7,7 @@ import JobItem from './JobItem'
 import './job.css'
 import CommentForm from './CommentForm'
 import CommentItem from './CommentItem'
+import { Text } from '@chakra-ui/react'
 
 const Job = ({ getJob, job: { job , loading} , match}, limit) => {
     useEffect(() => {
@@ -20,6 +21,7 @@ const Job = ({ getJob, job: { job , loading} , match}, limit) => {
     { job === null || loading ? <Spinner/> : (
     <Fragment>
         <JobItem key={job._id} job={job} />
+        <Text marginTop="1rem">Apply Link : {job.applyLink}</Text>
         <CommentForm jobId={job._id}  />
         <h3 className="job-heading">Comments</h3>
         <p> Still Under Contruction. </p>

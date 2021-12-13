@@ -15,6 +15,7 @@ router.post('/', [auth, [
     check('description', 'Description for the Job is required to Post about it.').not().isEmpty(),
     check('title', 'Title for the Job is required to Post about it.').not().isEmpty(),
     check('company', 'Company for the Job is required to Post about it.').not().isEmpty(),
+    check('applyLink', "Apply Link is required to post a job ad").not().isEmpty().matches(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/gm)
 ]] , async(req, res) => {
     const errors = validationResult(req);
     if(!errors.isEmpty()){

@@ -27,7 +27,7 @@ router.get('/me',auth, async (req, res) => {
 //  POST api/profile/ : Create or Update a User Profile : Private
 router.post('/', [auth, [
     check('status', 'Status is required.').not().isEmpty(),
-    check('skills', 'Skills are required').not().isEmpty()
+    check('skills', 'Skills are required').not().isEmpty().isLength({max: 24, min: 2})
 ]], async(req, res)=>{
     
     const errors =validationResult(req);
@@ -66,27 +66,22 @@ router.post('/', [auth, [
     if (twitter) profileFields.social.twitter = twitter;
     if (linkedin) profileFields.social.linkedin = linkedin;
     if (instagram) profileFields.social.instagram = instagram;
+    
     try {
-        let profile = Profile.findOne({user: req.user.id})
-        if(profile){
-            profile = await Profile.findOneAndUpdate(
-                { user: req.user.id }, 
-                { $set: profileFields },
-                { new: true },
-            );
-            res.json(profile);
-        }  else if(!profile){
-        profile = new Profile(profileFields);
-        await profile.save();
-        res.json(profile);
-     } 
-    }
-    catch (err) {
-        console.error(err.message)
-        res.status(500).send('Server Error occured')
+        // Using upsert option (creates new doc if no match is found):
+        let profile = await Profile.findOneAndUpdate(
+          { user: req.user.id },
+          { $set: profileFields },
+          { new: true, upsert: true, setDefaultsOnInsert: true }
+        );
+        return res.json(profile);
+      } catch (err) {
+        console.error(err.message);
+        return res.status(500).send('Server Error');
+      }
     }
 
-})
+)
 
 //  GET api/profile/ : Get all current Users Profile Information : Public
 
@@ -133,9 +128,9 @@ router.delete('/user/:userid',auth, async(req,res) => {
 
 //  PUT api/profile/experience : Update a Logged in Users Experience Information : Private
 router.put('/experience', [auth, [
-    check('title', 'Title is required').not().isEmpty(),
-    check('company', 'Company is required').not().isEmpty(),
-    check('from', 'From date is required').not().isEmpty()
+    check('title', 'Title is required').not().isEmpty().isLength({max:15, min: 3}),
+    check('company', 'Company is required').not().isEmpty().isLength({max:15, min: 3}),
+    check('from', 'From date is required').not().isEmpty().isDate()
 ] ], async (req, res) => {
     
     const errors =validationResult(req);
@@ -193,10 +188,10 @@ router.delete("/experience/:exp_id", auth, async (req, res) => {
 
 //  PUT api/profile/education : Update a Logged in Users Education Information : Private
 router.put('/education', [auth, [
-    check('school', 'School is required').not().isEmpty(),
-    check('degree', 'Degree is required').not().isEmpty(),
-    check('fieldofstudy', 'Field of Study is required').not().isEmpty(),
-    check('from', 'From date is required').not().isEmpty()
+    check('school', 'School is required').not().isEmpty().isLength({max:20, min: 3}),
+    check('degree', 'Degree is required').not().isEmpty().isLength({max:15, min: 3}),
+    check('fieldofstudy', 'Field of Study is required').not().isEmpty().isLength({max:15, min: 3}),
+    check('from', 'From date is required').not().isEmpty().isDate()
 ] ], async (req, res) => {
     
     const errors =validationResult(req);

@@ -15,7 +15,7 @@
   "dependencies": {
     "@chakra-ui/icons": "^1.1.1",
     "@emotion/react": "^11.6.0",
-    "antd": "^4.15.5",
+    "antd": "^4.17.3",
     "axios": "^0.24.0",
     "bcryptjs": "^2.4.3",
     "config": "^3.3.6",
