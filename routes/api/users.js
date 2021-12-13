@@ -13,8 +13,8 @@ const { getMaxListeners } = require("../../models/User");
 
 //  POST api/users : Regiter User : Public
 router.post('/', [
-    check('name', 'Name is Required').not().isEmpty(),
-    check('email', 'Please include a valid email').isEmail(),
+    check('name', 'Name is Required').not().isEmpty().isLength({max:15, min: 3}).isAlphanumeric(),
+    check('email', 'Please include a valid email').isEmail().isLength({ max:25 , min:3 }),
     check('password', 'Password must include one lowercase character, one uppercase character, a number, and a special character.').matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z\d@$.!%*#?&]/,)
 ], async (req, res) => {
     const errors = validationResult(req);
