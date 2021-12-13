@@ -11,7 +11,7 @@ const Resources = ({ getResources , resource:{
     useEffect(() => {
         getResources();
     }, []);
-    let showResources = resources.slice(0, 2);
+    let showResources = resources.slice(0, 3);
     return loading ? <Spinner/> : (
         <div >
            <Text fontSize='2xl' className="jobs-heading">Resources</Text>

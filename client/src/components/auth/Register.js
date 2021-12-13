@@ -41,14 +41,14 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
       <form className="form-section_form">
         <div className="form-control">
           <label className="form-label" htmlFor="name">
-            Full Name
+            Username
           </label>
           <input
             type="text"
             name="name"
             id="name"
             className="form-input"
-            placeholder="Name here"
+            placeholder="Username here"
             pattern="[a-zA-Z\s]+"
             title="Please enter Alphabets."
             value={name}

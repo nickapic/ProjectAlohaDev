@@ -1,6 +1,6 @@
 import 'antd/dist/antd.css';
 import './App.css';
-import { BrowserRouter as Router, Route,Switch} from 'react-router-dom'
+import { BrowserRouter as Router, Link, Route,Switch} from 'react-router-dom'
 import Navbar from './components/Navbar';
 import  HeroPage  from './components/HeroPage';
 import { Fragment , useEffect } from 'react';
@@ -30,8 +30,6 @@ import RegisterHR from './components/auth/RegisterHR';
 import Resources from './components/resources/Resources';
 import ResourcePage from './components/resources/ResourcePage';
 import CookieConsent from "react-cookie-consent";
-import { Link } from '@chakra-ui/layout';
-
 if(localStorage.token){
     setAuthToken(localStorage.token)
 }
@@ -70,9 +68,10 @@ const App = () => {
         <CookieConsent
           location="bottom"
           buttonText="Understood"
-          style={{ background: "#2B373B" }}
+          style={{ background: "#2B373B" , fontSize:"13px"}}
           buttonStyle={{ color: "#4e503b", fontSize: "13px" }}
           expires={360000}
+          debug={true}
         > 
           This website uses only essential cookies for Authentication and Authorization, no other cookies are used. To know more about our privacy please refer to our {<Link to="/gdpr" className="heropage-link">privacy policy</Link>}
         </CookieConsent>

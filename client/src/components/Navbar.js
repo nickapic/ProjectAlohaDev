@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import {  logout } from '../actions/auth';
 import { Fragment } from 'react';
 import { Button } from '@chakra-ui/button';
-import { MenuBar } from './dashboard/MenuBar';
+import MenuBar from "./dashboard/MenuBar"
 import { Text } from '@chakra-ui/layout';
 const Navbar = ({ auth: {isAuthenticated, loading}, logout}) => {
     const authLinks = (

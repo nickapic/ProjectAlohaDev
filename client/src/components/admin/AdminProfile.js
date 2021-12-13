@@ -16,7 +16,7 @@ const AdminProfiles = ({ getUsers , auth:{
     }, [getUsers]);
     return loading ? <Spinner/> : (
         <div >
-           <Table width="70%" marginTop="2rem">
+           <Table w="70%" marginTop="2rem">
             <TableCaption>Users</TableCaption>
                 <Thead>
                     <Tr>

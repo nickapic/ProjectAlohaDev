@@ -11,15 +11,15 @@ const GDPR = ({ auth: {isAuthenticated, loading, user}, logout, deleteAccount}) 
 
     return (
         <div className="gdpr">
-            <Text fontSize="2xl">Privacy Policy</Text>
+            <Text fontSize="3xl" fontWeight="700">Privacy Policy</Text>
             
-            <Text>Last updated: December 09, 2021</Text>
+            <Text fontWeight="700">Last updated: December 09, 2021</Text>
             <br/>
             <Text> This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your information when You use the Service and tells You about Your privacy rights and how the law protects You.
             <br/>
             We use Your Personal data to provide and improve the Service. By using the Service, You agree to the collection and use of information in accordance with this Privacy Policy. This Privacy Policy has been created with the help of the Privacy Policy Generator.
             <br/>
-           <Text fontSize="xl"> Interpretation and Definitions </Text>
+           <Text fontSize="2xl"> Interpretation and Definitions </Text>
             
             <Text fontWeight="bold"> Interpretation </Text>
             The words of which the initial letter is capitalized have meanings defined under the following conditions. The following definitions shall have the same meaning regardless of whether they appear in singular or in plural.
@@ -59,7 +59,8 @@ const GDPR = ({ auth: {isAuthenticated, loading, user}, logout, deleteAccount}) 
             You means the individual accessing or using the Service, or the company, or other legal entity on behalf of which such individual is accessing or using the Service, as applicable.
             <br/>
 
-            <Text fontSize="2xl">Collecting and Using Your Personal Data</Text>
+
+            <Text fontSize="xl" marginTop="1rem">Collecting and Using Your Personal Data</Text>
             <Text fontWeight="bold"> Types of Data Collected </Text>    
 
             Personal Data : 
@@ -93,7 +94,7 @@ const GDPR = ({ auth: {isAuthenticated, loading, user}, logout, deleteAccount}) 
             <br/>
 
             
-            <Text fontSize="2xl">Tracking Technologies and Cookies</Text>
+            <Text fontSize="xl" marginTop="1rem">Tracking Technologies and Cookies</Text>
 
             We use Cookies and similar tracking technologies to track the activity on Our Service and store certain information. Tracking technologies used are beacons, tags, and scripts to collect and track information and to improve and analyze Our Service. The technologies We use may include:
             <br/>
@@ -202,6 +203,7 @@ const GDPR = ({ auth: {isAuthenticated, loading, user}, logout, deleteAccount}) 
             Contact Us
             <br/>
             If you have any questions about this Privacy Policy, You can contact us:
+            <br/>
             <br/>
             By email: nickapic@wearehackerone.com
         </Text>
