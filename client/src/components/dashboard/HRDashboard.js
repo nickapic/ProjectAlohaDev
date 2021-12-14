@@ -26,7 +26,7 @@ const HRDashboard = ({getCurrentProfile, auth: {user , role }, profile: { profil
                         <Actions/> 
                     </Box>
                     <Box marginTop="2rem" w="95%" h="28rem" bg="#F1F1F1" borderRadius="lg"padding="2rem" boxShadow="md">
-                        <Resources/>
+                        <Resources limit={2}/>
                     </Box>
         </Flex>
                 <Spacer/>

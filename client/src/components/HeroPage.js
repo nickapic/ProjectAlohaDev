@@ -16,7 +16,7 @@ const HeroPage = ({ isAuthenticated }) => {
         <div className="hero-page">
             <div className="right-side">
                 <h3 className="right-heading">Cyber Security Free Lancing Simplified.</h3>
-                <h3 className="right-subheading">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vestibulum lorem vitae lorem lacinia, bibendum molestie neque scelerisque. Curabitur pulvinar dolor enim. Aliquam id odio et est ornare euismod. Aliquam hendrerit massa vel erat tempor, nec dictum leo vulputate. Mauris ultrices tellus ac augue elementum euismod. Aenean vestibulum nisi dui.</h3>
+                <h3 className="right-subheading">The cybersecurity world has grown significantly in the past years hence the demand of cyber security professionals has also gone up 10 folds, This platform is designed to help out the peopel find jobs and for those companies to find skilled professionals easily. It also aims to teach new security professinals topics in the field of Cyber Security to make the learning curve in Cyber Security easier for everyone entering the field.</h3>
                 <Button colorScheme="teal"><Link to="/register" className="right-button">Get started</Link></Button>
                 <Button colorScheme="teal" marginLeft="15px"><Link to="/hrregister" className="right-button"> Register as HR</Link></Button>
             </div>

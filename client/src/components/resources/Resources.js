@@ -7,11 +7,11 @@ import ResourceItem from './ResourceItem'
 import { Flex, Text } from '@chakra-ui/layout'
 const Resources = ({ getResources , resource:{
     resources, loading
-} }, ) => {
+}, limit }, ) => {
     useEffect(() => {
         getResources();
     }, []);
-    let showResources = resources.slice(0, 2);
+    let showResources = resources.slice(0, limit);
     return loading ? <Spinner/> : (
         <div >
            <Text fontSize='2xl' className="jobs-heading">Resources</Text>
