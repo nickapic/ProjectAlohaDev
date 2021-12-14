@@ -128,8 +128,8 @@ router.delete('/user/:userid',auth, async(req,res) => {
 
 //  PUT api/profile/experience : Update a Logged in Users Experience Information : Private
 router.put('/experience', [auth, [
-    check('title', 'Title is required').not().isEmpty().isLength({max:15, min: 3}),
-    check('company', 'Company is required').not().isEmpty().isLength({max:15, min: 3}),
+    check('title', 'Title is required').not().isEmpty(),
+    check('company', 'Company is required').not().isEmpty().isLength({ min: 3, max:15}),
     check('from', 'From date is required').not().isEmpty().isDate()
 ] ], async (req, res) => {
     
