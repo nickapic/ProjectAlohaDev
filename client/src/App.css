@@ -50,7 +50,9 @@ a:active {
   background: #17a2b8;
   color: #fff;
 }
-
+.copyright {
+  font-size: 10px;
+}
 .btn-light,
 .bg-light,
 .badge-light,
@@ -155,7 +157,14 @@ a:active {
   .action-button {
     font-size: 9px !important;
   }
-
+  .noprofile-right {
+    width: 100% !important;
+  }
+  .noprofile-left {
+    margin-top: 5rem !important;
+    width: 0% !important;
+    display: none;
+  }
   .list-items {
     margin-left: 1rem;
   }
