@@ -27,7 +27,7 @@ router.get('/me',auth, async (req, res) => {
 //  POST api/profile/ : Create or Update a User Profile : Private
 router.post('/', [auth, [
     check('status', 'Status is required.').not().isEmpty(),
-    check('skills', 'Skills are required').not().isEmpty().isLength({max: 24, min: 2})
+    check('skills', 'Skills are required').not().isEmpty()
 ]], async(req, res)=>{
     
     const errors =validationResult(req);
