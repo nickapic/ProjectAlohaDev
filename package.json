@@ -7,6 +7,8 @@
     "start": "node server",
     "server": "nodemon server",
     "client": "npm start --prefix client",
+    "test": "jest --detectOpenHandles",
+    "install-client": "npm install -prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "postbuild": "npm install --prefix client"
   },
@@ -32,6 +34,8 @@
   },
   "devDependencies": {
     "concurrently": "^6.0.0",
-    "nodemon": "^2.0.7"
+    "jest": "^27.4.5",
+    "nodemon": "^2.0.7",
+    "supertest": "^6.1.6"
   }
 }

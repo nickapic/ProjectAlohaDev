@@ -42,3 +42,5 @@ const PORT = process.env.PORT || 5000;
 
 // Starting the Server here 
 app.listen(PORT, () => console.log(`Server is on at the port ${PORT}`))
+
+module.exports = app;
