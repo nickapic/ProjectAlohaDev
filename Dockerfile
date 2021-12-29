@@ -7,4 +7,5 @@ COPY ./pacakge*.json ./
 RUN npm install 
 
 COPY . .
+
 RUN npm run install-client
