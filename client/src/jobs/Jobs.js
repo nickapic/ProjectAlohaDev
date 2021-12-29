@@ -20,7 +20,7 @@ const Jobs = ({ getJobs , job:{
     const showJobs = jobs.filter( job => {
         if (searchQuery === ""){
             return jobs.slice(limit);
-        } else if(job.title.toLowerCase().includes(searchQuery)){
+        } else if(job.title.toLowerCase().includes(searchQuery.toLowerCase())){
             return job;
         }
     })

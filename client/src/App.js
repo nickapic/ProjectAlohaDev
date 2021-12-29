@@ -30,6 +30,7 @@ import RegisterHR from './components/auth/RegisterHR';
 import Resources from './components/resources/Resources';
 import ResourcePage from './components/resources/ResourcePage';
 import CookieConsent from "react-cookie-consent";
+import { Text } from '@chakra-ui/react';
 if(localStorage.token){
     setAuthToken(localStorage.token)
 }
@@ -73,7 +74,7 @@ const App = () => {
           expires={360000}
           debug={true}
         > 
-          This website uses only essential cookies for Authentication and Authorization, no other cookies are used. To know more about our privacy please refer to our {<Link to="/gdpr" className="heropage-link">privacy policy</Link>}
+          <Text>This website uses only essential cookies for Authentication and Authorization, no other cookies are used. To know more about our privacy please refer to our {<Text as={Link} to="/gdpr" className="heropage-link">privacy policy</Text> } </Text>
         </CookieConsent>
     </div> 
     </Router>
